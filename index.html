@@ -60,30 +60,23 @@
               ></textarea>
             </div>
             <div id="preview">
-              {/* preview data */}
-              <div id="preview_data">
-                <p>heelo</p>
-                {
-                  // render parsed markdown
-                  // parseMarkdown("<p>hello</p>")
-                  // marked.parse
-                  parseMarkdown("<p>hello</p>")
-                }
-              </div>
+              {/* preview data using iframe */}
+              <iframe
+                id="preview_frame"
+                name="preview_frame"
+                src="about:blank"
+                frameBorder="0"
+                width="100%"
+                height="100%"
+              />
+               
+               
             </div>
           </div>
         );
       }
 
-      // parse html string to   react element
-      function parseMarkdown(markdown) {
-        return ReactDOM.render(
-          React.createElement(ReactMarkdown, {
-            source: markdown,
-            escapeHtml: false,
-          })
-        );
-      }
+      // parse html string using dangerouslySetInnerHTML
 
       // render the react component
       ReactDOM.render(<App />, document.querySelector("#app"));
