@@ -47,17 +47,20 @@
 
     <!-- create a react script -->
     <script type="text/babel">
+      var style = `<style>
+        body{word-break: break-all;}
+        h1{border-bottom: 2px solid;}
+        h2,h3{border-bottom: 1px solid;}
+        h4,h5,h6{border-bottom: 1px dotted;}
+        </style>`;
       function previewData() {
         // get editor value
-        var editor = document.getElementById("editor").value;
-        var iframe = document.getElementById("output-frame");
-        var parse = marked.parse(editor);
+        var editor = document.getElementById("editor").value,
+          iframe = document.getElementById("output-frame"),
+          parse = marked.parse(editor);
         // iframe.document.body.style.wordWrap = "break-word";
 
-        iframe.src =
-          "data:text/html;charset=utf-8," +
-          encodeURI(parse) +
-          "<style>    body{word-break: break-all;}</style>";
+        iframe.src = "data:text/html;charset=utf-8," + encodeURI(parse) + style;
       }
       // create a react component
       function App() {
