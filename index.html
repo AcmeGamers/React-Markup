@@ -47,20 +47,25 @@
 
     <!-- create a react script -->
     <script type="text/babel">
-      var style = `<style>
+      var style = `
         body{word-break: break-all;}
         h1{border-bottom: 2px solid;}
         h2,h3{border-bottom: 1px solid;}
         h4,h5,h6{border-bottom: 1px dotted;}
-        </style>`;
+        `;
+
+      // for staters
+      // let iframe = document.getElementById("output-frame");
+      // iframe.src =
+      //   "data:text/html;charset=utf-8,%3Ch1%20id=%22welcome-to-my-react-markdown-previewer%22%3EWelcome%20to%20my%20React%20Markdown%20Previewer!%3C/h1%3E%0A%3Ch2%20id=%22this-is-a-sub-heading%22%3EThis%20is%20a%20sub-heading...%3C/h2%3E%0A%3Ch3%20id=%22and-heres%22%3EAnd%20heres%3C/h3%3E%0A%3Cstyle%3E%0A%20%20%20%20%20%20%20%20body%7Bword-break:%20break-all;%7D%0A%20%20%20%20%20%20%20%20h1%7Bborder-bottom:%202px%20solid;%7D%0A%20%20%20%20%20%20%20%20h2,h3%7Bborder-bottom:%201px%20solid;%7D%0A%20%20%20%20%20%20%20%20h4,h5,h6%7Bborder-bottom:%201px%20dotted;%7D%0A%20%20%20%20%20%20%20%20%3C/style%3E";
+
       function previewData() {
-        // get editor value
         var editor = document.getElementById("editor").value,
           iframe = document.getElementById("output-frame"),
           parse = marked.parse(editor);
-        // iframe.document.body.style.wordWrap = "break-word";
-
-        iframe.src = "data:text/html;charset=utf-8," + encodeURI(parse) + style;
+        iframe.src =
+          "data:text/html;charset=utf-8," +
+          encodeURI(parse + "<style>" + style + "</style>");
       }
       // create a react component
       function App() {
