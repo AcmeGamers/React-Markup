@@ -1,2 +1,66 @@
-/* Predefined CSS */
+body {
+  margin: 0;
+}
 
+.cotnainer {
+  height: 100vh;
+}
+
+#markdown_editor {
+  width: 30%;
+  height: 100vh;
+  border: none;
+}
+#editor {
+  background-color: #f2f2f2;
+  width: 100%;
+  height: 100vh;
+  border: none;
+}
+
+#preview {
+  width: 100%;
+}
+
+#output-frame {
+  width: 100%;
+  height: 100vh;
+  border: none;
+  overflow-x: hidden;
+}
+/* Predefined CSS */
+.flex {
+  display: flex;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.verti-center {
+  align-items: center;
+}
+.horiz-center {
+  justify-content: center;
+}
+.full-width {
+  width: -webkit-fill-available;
+}
+.space-between {
+  justify-content: space-between;
+}
+.space-around {
+  justify-content: space-around;
+}
+.space-evenly {
+  justify-content: space-evenly;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}

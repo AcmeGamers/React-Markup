@@ -44,38 +44,49 @@
   <body>
     <!-- body -->
     <div id="app"></div>
+    <div>
+      <div id="markdown_editor">
+        <textarea
+          name="editor"
+          id="editor"
+          oninput="previewData()"
+          class="editor"
+        ></textarea>
+      </div>
+      <div id="preview">
+        {/* preview data using iframe */}
+        <iframe id="output-frame"></iframe>
+      </div>
+    </div>
+    <script>
+      // get editor value
+      function previewData() {
+        var editor = document.getElementById("editor").value;
+        var iframe = document.getElementById("output-frame");
+        iframe.src = "data:text/html;charset=utf-8," + encodeURI(editor);
+      }
+    </script>
 
     <!-- create a react script -->
     <script type="text/babel">
-      function previewData() {
-        // get editor value
-        var editor = document.getElementById("editor").value;
-        var iframe = document.getElementById("output-frame");
-        var parse = marked.parse(editor);
-        // iframe.document.body.style.wordWrap = "break-word";
-
-        iframe.src =
-          "data:text/html;charset=utf-8," +
-          encodeURI(parse) +
-          "<style>    body{word-break: break-all;}</style>";
-      }
       // create a react component
       function App() {
         return (
-          <div id="container" className="row">
-            <div id="markdown_editor">
-              <textarea
-                name="editor"
-                id="editor"
-                onChange={previewData}
-                className="editor"
-              ></textarea>
-            </div>
-            <div id="preview">
-              {/* preview data using iframe */}
-              <iframe id="output-frame"></iframe>
-            </div>
-          </div>
+          <></>
+          // <div>
+          //   <div id="markdown_editor">
+          //     <textarea
+          //       name="editor"
+          //       id="editor"
+          //       oninput="previewData()"
+          //       class="editor"
+          //     ></textarea>
+          //   </div>
+          //   <div id="preview">
+          //     {/* preview data using iframe */}
+          //     <iframe id="output-frame"></iframe>
+          //   </div>
+          // </div>
         );
       }
 
@@ -85,7 +96,3 @@
     <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
   </body>
 </html>
-<!-- 
-    <div class="markup"></div>
-      <div class="show-result"></div>
- -->
