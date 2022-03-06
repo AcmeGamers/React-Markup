@@ -47,7 +47,7 @@
 
     <!-- create a react script -->
     <script type="text/babel">
-      var style = `
+      var basic = `
         body{word-break: break-all;}
         h1{border-bottom: 2px solid;}
         h2,h3{border-bottom: 1px solid;}
@@ -55,12 +55,12 @@
         pre{background: bisque;padding: 10px;border-radius: 5px;}
         pre code{background: transparent;padding: 0;}
         code{background: wheat;padding: 3px;}
-        table{border:1px solid; border-collapse: collapse;border-spacing: 0;width: 100%;}
-        table tr{border-top: 1px solid #c6cbd1; background-color: #fff;}
-        table tr:nth-child(2n){background-color: #f6f8fa;}
-        table th{font-weight: 600;padding: 6px 13px;border: 1px solid #c6cbd1;text-align: left;}
-        table td{padding: 6px 13px; border: 1px solid;}
         img{max-width: 100%;}
+        `,
+        table = `
+          table{border:1px solid; border-collapse: collapse;border-spacing: 0;width: 100%;}
+          th{font-weight: 600;padding: 6px 13px;border: 1px solid;text-align: left;}
+          td{padding: 6px 13px; border: 1px solid;}
         `;
 
       // for staters
@@ -69,12 +69,15 @@
       //   "data:text/html;charset=utf-8,%3Ch1%20id=%22welcome-to-my-react-markdown-previewer%22%3EWelcome%20to%20my%20React%20Markdown%20Previewer!%3C/h1%3E%0A%3Ch2%20id=%22this-is-a-sub-heading%22%3EThis%20is%20a%20sub-heading...%3C/h2%3E%0A%3Ch3%20id=%22and-heres%22%3EAnd%20heres%3C/h3%3E%0A%3Cstyle%3E%0A%20%20%20%20%20%20%20%20body%7Bword-break:%20break-all;%7D%0A%20%20%20%20%20%20%20%20h1%7Bborder-bottom:%202px%20solid;%7D%0A%20%20%20%20%20%20%20%20h2,h3%7Bborder-bottom:%201px%20solid;%7D%0A%20%20%20%20%20%20%20%20h4,h5,h6%7Bborder-bottom:%201px%20dotted;%7D%0A%20%20%20%20%20%20%20%20%3C/style%3E";
 
       function previewData() {
-        var editor = document.getElementById("editor").value,
+        var editor = document
+            .getElementById("editor")
+            .value.replaceAll("'", "&apos;"),
           iframe = document.getElementById("output-frame"),
           parse = marked.parse(editor);
+
         iframe.src =
           "data:text/html;charset=utf-8," +
-          encodeURI(parse + "<style>" + style + "</style>");
+          encodeURI(parse + "<style>" + basic + table + "</style>");
       }
       // create a react component
       function App() {
