@@ -48,7 +48,7 @@
     <!-- create a react script -->
     <script type="text/babel">
       var basic = `
-        body{word-break: break-all;}
+        body{word-break: break-all; padding: 10px 20px; font-family: system-ui;}
         h1{border-bottom: 2px solid;}
         h2,h3{border-bottom: 1px solid;}
         h4,h5,h6{border-bottom: 1px dotted;}
@@ -58,9 +58,12 @@
         img{max-width: 100%;}
         `,
         table = `
-          table{border:1px solid; border-collapse: collapse;border-spacing: 0;width: 100%;}
+          table{border:1px solid; border-collapse: collapse;border-spacing: 0;}
           th{font-weight: 600;padding: 6px 13px;border: 1px solid;text-align: left;}
           td{padding: 6px 13px; border: 1px solid;}
+        `,
+        blockquote = `
+          blockquote {border-left: 3px solid;padding: 0px 15px;}
         `;
 
       // for staters
@@ -77,7 +80,9 @@
 
         iframe.src =
           "data:text/html;charset=utf-8," +
-          encodeURI(parse + "<style>" + basic + table + "</style>");
+          encodeURI(
+            parse + "<style>" + basic + table + blockquote + "</style>"
+          );
       }
       // create a react component
       function App() {
@@ -93,7 +98,10 @@
             </div>
             <div id="preview">
               {/* preview data using iframe */}
-              <iframe id="output-frame"></iframe>
+              <iframe
+                id="output-frame"
+                src="data:text/html;charset=utf-8,%3Cstyle%3E%0A%20%20%20%20%20%20%20%20body%7Bword-break:%20break-all;%20padding:%2010px%2020px;%20font-family:%20system-ui;%7D%0A%20%20%20%20%20%20%20%20h1%7Bborder-bottom:%202px%20solid;%7D%0A%20%20%20%20%20%20%20%20h2,h3%7Bborder-bottom:%201px%20solid;%7D%0A%20%20%20%20%20%20%20%20h4,h5,h6%7Bborder-bottom:%201px%20dotted;%7D%0A%20%20%20%20%20%20%20%20pre%7Bbackground:%20bisque;padding:%2010px;border-radius:%205px;%7D%0A%20%20%20%20%20%20%20%20pre%20code%7Bbackground:%20transparent;padding:%200;%7D%0A%20%20%20%20%20%20%20%20code%7Bbackground:%20wheat;padding:%203px;%7D%0A%20%20%20%20%20%20%20%20img%7Bmax-width:%20100%25;%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20table%7Bborder:1px%20solid;%20border-collapse:%20collapse;border-spacing:%200;%7D%0A%20%20%20%20%20%20%20%20%20%20th%7Bfont-weight:%20600;padding:%206px%2013px;border:%201px%20solid;text-align:%20left;%7D%0A%20%20%20%20%20%20%20%20%20%20td%7Bpadding:%206px%2013px;%20border:%201px%20solid;%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20blockquote%20%7Bborder-left:%203px%20solid;padding:%200px%2015px;%7D%0A%20%20%20%20%20%20%20%20%3C/style%3E"
+              ></iframe>
             </div>
           </div>
         );
@@ -102,7 +110,7 @@
       // render the react component
       ReactDOM.render(<App />, document.querySelector("#app"));
     </script>
-    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
   </body>
 </html>
 <!-- 
